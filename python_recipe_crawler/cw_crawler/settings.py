@@ -13,5 +13,15 @@ BOT_NAME = 'cw_crawler'
 SPIDER_MODULES = ['cw_crawler.spiders']
 NEWSPIDER_MODULE = 'cw_crawler.spiders'
 
+ITEM_PIPELINES = {
+    # 'myproject.pipelines.JsonWriterPipeline': 800,
+    'cw_crawler.pipelines.MongoDBPipeline':300,
+    'cw_crawler.pipelines.JsonWriterPipeline':100
+}
+MONGODB_SERVER = "localhost"
+MONGODB_PORT = 27017
+MONGODB_DB = "cocktail_wizard"
+MONGODB_COLLECTION = "ingredients"
+
 # Crawl responsibly by identifying yourself (and your website) on the user-agent
 #USER_AGENT = 'cw_crawler (+http://www.yourdomain.com)'
