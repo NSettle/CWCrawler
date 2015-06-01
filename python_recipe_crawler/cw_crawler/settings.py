@@ -13,10 +13,13 @@ BOT_NAME = 'cw_crawler'
 SPIDER_MODULES = ['cw_crawler.spiders']
 NEWSPIDER_MODULE = 'cw_crawler.spiders'
 
+IMAGES_STORE = '/home/ferreri/repos/CWCrawler/img'
+
 ITEM_PIPELINES = {
     # 'myproject.pipelines.JsonWriterPipeline': 800,
-    'cw_crawler.pipelines.MongoDBPipeline':300,
-    'cw_crawler.pipelines.JsonWriterPipeline':100
+    'scrapy.contrib.pipeline.images.ImagesPipeline': 1,
+    'cw_crawler.pipelines.MongoDBPipeline': 300,
+    'cw_crawler.pipelines.JsonWriterPipeline': 100
 }
 MONGODB_SERVER = "localhost"
 MONGODB_PORT = 27017

@@ -13,11 +13,11 @@ class IngredientsSpider(scrapy.Spider):
     start_urls = (
         'http://www.makemeacocktail.com/ingredients/',
     )
+    base_url = 'http://www.makemeacocktail.com/scripts/ajaxcalls.php?ajaxCall=in_loadIngredient&typee=letter&letter='
 
     def parse(self, response):
-        base_url = 'http://www.makemeacocktail.com/scripts/ajaxcalls.php?ajaxCall=in_loadIngredient&typee=letter&letter='
         for letter in string.ascii_uppercase:
-            url = base_url + letter
+            url = self.base_url + letter
             yield Request(url, callback = self.parseIngredient)
 
     def parseIngredient(self, response):
